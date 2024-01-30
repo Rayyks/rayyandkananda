@@ -67,7 +67,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
               {/* Include your dynamic content here */}
               {demoUrl && (
                 <a
-                  href={demoUrl}
+                  href={demoUrl || ""}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="button-56"
@@ -78,7 +78,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
               )}
               {codeUrl && (
                 <a
-                  href={codeUrl}
+                  href={codeUrl || ""}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="button-56"
