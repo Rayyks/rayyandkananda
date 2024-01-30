@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 import Image from "next/image";
 import React from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
@@ -12,8 +14,24 @@ import { useActiveSectionContext } from "@/context/active-section-context";
 import ME from "@/public/me.webp";
 
 export default function Intro() {
+  const [isLanguageModalOpen, setLanguageModalOpen] = useState(false);
   const { ref } = useSectionInView("Home", 0.5);
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
+
+  const openLanguageModal = () => {
+    setLanguageModalOpen(true);
+  };
+
+  const closeLanguageModal = () => {
+    setLanguageModalOpen(false);
+  };
+
+  const chooseCV = (language: any) => {
+    const filePath =
+      language === "english" ? "/CV_Rayyand_EN.pdf" : "/CV_Rayyand_ID.pdf";
+    window.open(filePath, "_blank");
+    closeLanguageModal();
+  };
 
   return (
     <section
@@ -89,14 +107,52 @@ export default function Intro() {
           <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition" />
         </Link>
         <span className="px-5">Or</span>
-        <a
+        <motion.div
           className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10"
-          href="/rayyand_cv.pdf"
-          download
+          onClick={openLanguageModal}
         >
           Download CV{" "}
           <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
-        </a>
+        </motion.div>
+
+        {/* =============== || POPUP CV DOWNLOAD || ================*/}
+        <AnimatePresence>
+          {isLanguageModalOpen && (
+            <motion.div
+              className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <motion.div
+                className="bg-gray-800 p-8 rounded-md"
+                initial={{ scale: 0.5 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0.5 }}
+              >
+                <p className="mb-4">Choose language:</p>
+                <button
+                  className="bg-white hover:bg-gray-300 ease-in-out duration-300 text-black font-bold p-3 rounded-xl"
+                  onClick={() => chooseCV("english")}
+                >
+                  English
+                </button>
+                <button
+                  className="mx-5 bg-white hover:bg-gray-300 ease-in-out duration-300 text-black font-bold p-3 rounded-xl"
+                  onClick={() => chooseCV("indonesian")}
+                >
+                  Indonesian
+                </button>
+                <button
+                  className="bg-red-500 hover:bg-red-900 ease-in-out duration-300 text-white font-bold p-3 rounded-xl"
+                  onClick={closeLanguageModal}
+                >
+                  Cancel
+                </button>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <a
           className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60 ml-1"
