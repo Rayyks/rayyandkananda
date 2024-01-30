@@ -6,8 +6,8 @@ type ProjectModalProps = {
   onClose: () => void;
   title: string;
   description: string;
-  demoUrl?: string;
-  codeUrl?: string;
+  demoUrl?: string | null;
+  codeUrl?: string | null;
 };
 
 const ProjectModal: React.FC<ProjectModalProps> = ({

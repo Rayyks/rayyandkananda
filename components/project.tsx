@@ -5,15 +5,7 @@ import Image from "next/image";
 import ProjectModal from "./ProjectModal";
 import { projectsData } from "@/lib/data";
 
-type ProjectProps = {
-  title: string;
-  completed: boolean;
-  description: string;
-  tags: string[];
-  imageUrl: string;
-  demoUrl?: string;
-  codeUrl?: string;
-};
+type ProjectProps = (typeof projectsData)[number];
 
 const Project: React.FC<ProjectProps> = ({
   title,

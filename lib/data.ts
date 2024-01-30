@@ -96,7 +96,7 @@ export const projectsData = [
       "QBC - Make your dream custom PC style comes true with QuantumByte Core. 🧑🏻‍💻",
     tags: ["React", "Laravel", "MySql", "Tailwind", "PhpMyAdmin"],
     imageUrl: RIZZ,
-    demoUrl: null,
+    demoUrl: "" || null,
     codeUrl: "https://github.com/Rayyks/QBC-Corp",
   },
   {
@@ -105,7 +105,7 @@ export const projectsData = [
     description: "🛍️ Digital Store: for shop. yea, that's it",
     tags: ["Next.js", "MonggoDb", "Tailwind", "TRPC", "Stripe", "Payload"],
     imageUrl: DM,
-    demoUrl: null,
+    demoUrl: "" || null,
     codeUrl: "https://github.com/Rayyks/digital-mart",
   },
   {
@@ -114,7 +114,7 @@ export const projectsData = [
     description: "🌐 DSC: Learning 😊",
     tags: ["Next.js", "MySql", "Tailwind", "Prisma", "Stripe", "Mux", "Clerk"],
     imageUrl: DSC,
-    demoUrl: null,
+    demoUrl: "" || null,
     codeUrl: "https://github.com/Rayyks/DSCourse",
   },
   {
@@ -134,7 +134,7 @@ export const projectsData = [
       "Simplify laundry with our Mobile App! Streamline your routine, say goodbye to hassles, and embrace convenience. 🧺📱",
     tags: ["Flutter", "Dart", "MySql", "Laravel"],
     imageUrl: Clean,
-    demoUrl: null,
+    demoUrl: "" || null,
     codeUrl: "https://github.com/Rayyks/CLean-In",
   },
   {
@@ -144,7 +144,7 @@ export const projectsData = [
       "Student attendance application using qr code to facilitate the attendance process.📅✅",
     tags: ["PHP", "HTML", "CSS", "JavaScript", "Bootstrap", "MySql"],
     imageUrl: QR,
-    demoUrl: null,
+    demoUrl: "" || null,
     codeUrl: "https://github.com/Rayyks/absensi-qr-mahasiswa",
   },
   {
@@ -164,7 +164,7 @@ export const projectsData = [
       "Sentra HKI Web App: Effortless copyright services for artists. Create, secure, manage intellectual assets. Register/login for submissions. 🎨📝🔐",
     tags: ["React", "Next.js", "SQL", "Tailwind", "Framer"],
     imageUrl: HKI,
-    demoUrl: null,
+    demoUrl: "" || null,
     codeUrl: "https://github.com/Rayyks/last_hope_hki_ig",
   },
   {
