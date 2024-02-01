@@ -48,7 +48,7 @@ export const educationsData = [
     title: "Multistudi High School",
     location: "Software Engineering, Batam",
     description:
-      "Completed grade 12 at Multistudi High School with a strong foundation in software engineering, including a deep understanding of software development principles, algorithms, and their applications.",
+      "Completed grade at Multistudi High School with a strong foundation in software engineering, including a deep understanding of software development principles, algorithms, and their applications.",
     icon: React.createElement(LuGraduationCap),
     date: "2019 - 2022",
   },
@@ -56,9 +56,9 @@ export const educationsData = [
     title: "Politeknik Negeri Batam",
     location: "Software Engineering, Batam",
     description:
-      "I am currently pursuing a Diploma in Software Engineering at Politeknik Negeri Batam. I have completed 3 semesters. In addition, I am working on real projects at university, where I collaborate with a team of talented developers on exciting projects.",
+      "I am currently pursuing a Diploma in Software Engineering at Politeknik Negeri Batam. In addition, I am working on many projects at university, where I collaborate with a team and learn new skills and technologies.",
     icon: React.createElement(LuGraduationCap),
-    date: "2022 - 2025",
+    date: "2022 - Present",
   },
 ];
 
@@ -70,21 +70,24 @@ export const experiencesData = [
       "Revamped the web application's UI/UX by optimizing responsiveness and design as a web designer",
     icon: React.createElement(LuGraduationCap),
     date: "2020 - 2021",
+    techs: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+  },
+  {
+    title: "IT Support Officer & IT Analyst",
+    location: "PT. Panca Teknologi Nusantara, Batam",
+    description:
+      "Provides technical assistance to end-users, Analyzes and improves IT systems, Designs solutions for efficiency and collaborates on system enhancements.",
+    icon: React.createElement(CgWorkAlt),
+    date: "2022 - 2023 ",
   },
   {
     title: "Front-End Developer",
     location: "PT. Panca Teknologi Nusantara, Batam",
     description:
-      "Working on the frontend of the web application using ReactJS, and Material UI & TailwindCss.",
-    icon: React.createElement(CgWorkAlt),
-    date: "2022 - 2023",
-  },
-  {
-    title: "Full-Stack Developer (College Project with real Client)",
-    location: "Politeknik Negeri, Batam ",
-    description: "Working on the Fullstack of the web application",
+      "Working on the frontend of the web application using React.js, integrating APIs, and optimizing performance.",
     icon: React.createElement(FaReact),
-    date: "2023 - present",
+    date: "2022 - 2023",
+    techs: ["React", "Tailwind", "Framer", "MySql", "PHP"],
   },
 ] as const;
 
