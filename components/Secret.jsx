@@ -6,7 +6,7 @@ import { socials } from "@/lib/data";
 const Secrets = ({ isClicked, setIsClicked }) => {
   return (
     <AnimatePresence>
-      {isClicked && (
+      {isClicked === 0 && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -90,8 +90,9 @@ const Secrets = ({ isClicked, setIsClicked }) => {
                       <p className="mb-6 text-xl leading-relaxed text-blueGray-400">
                         Passionate and self-taught developer with a strong
                         background in web development and design. A fast
-                        learner, hard worker, and a problem solver. Welcome to
-                        the future of tech with a touch of INTJ brilliance.
+                        learner, hard worker, and a problem solver. Now this
+                        this time you have to hire me yk hahah cus why not.....
+                        im batman
                       </p>
                     </div>
                   </div>

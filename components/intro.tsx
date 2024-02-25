@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import toast from "react-hot-toast";
 
 import Image from "next/image";
 import React from "react";
@@ -16,7 +17,7 @@ import Secret from "@/components/Secret";
 
 export default function Intro() {
   const [isLanguageModalOpen, setLanguageModalOpen] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState(3);
   const { ref } = useSectionInView("Home", 0.5);
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
 
@@ -53,10 +54,7 @@ export default function Intro() {
               duration: 0.2,
             }}
           >
-            <div
-              className="font-bold tooltip tooltip-right tooltip-secondary"
-              data-tip="You can click it for non-work related stuff ;)"
-            >
+            <div className="font-bold tooltip tooltip-right tooltip-secondary">
               <Image
                 src={ME}
                 alt="Ricardo portrait"
@@ -65,10 +63,25 @@ export default function Intro() {
                 quality="95"
                 priority={true}
                 onClick={() => {
-                  setIsClicked(true);
-                  console.log(isClicked);
+                  if (isClicked > 0) {
+                    setIsClicked(isClicked - 1);
+                    console.log(isClicked - 1);
+                  } else {
+                    toast(
+                      <div>
+                        <img
+                          src="https://media0.giphy.com/media/8TweEdaxxfuElKkRxz/200w.gif?cid=6c09b952n9ox2hoal1ccrakn6mm86r114p31hax4ibbgt1l1&ep=v1_gifs_search&rid=200w.gif&ct=g"
+                          alt="ma balls"
+                        />
+                      </div>
+                    );
+                  }
+
+                  if (isClicked === 2) {
+                    toast.error("Almost there, keep going! 🎉");
+                  }
                 }}
-                className={`h-24 w-24 rounded-full object-cover border-[0.35rem] border-white shadow-xl cursor-pointer transition ease-in-out duration-500 tooltip  ${
+                className={`h-24 w-24 rounded-full object-cover border-[0.35rem] border-white shadow-xl transition ease-in-out duration-500 tooltip  ${
                   isClicked ? "transform rotate-[360deg]" : ""
                 }`}
               />
