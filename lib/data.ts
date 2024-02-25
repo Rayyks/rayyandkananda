@@ -98,11 +98,10 @@ export const experiencesData = [
 
 export const projectsData = [
   {
-    title: "QuantumByte Core (QBC)",
+    title: "Foreign Body (FBD)",
     completed: false,
-    description:
-      "QBC - Make your dream custom PC style comes true with QuantumByte Core. 🧑🏻‍💻",
-    tags: ["React", "Laravel", "MySql", "Tailwind", "PhpMyAdmin"],
+    description: "With FBD you can make your body just like you want",
+    tags: ["React.js", "Express", "Node.js", "Aceternity UI", "MongoDb"],
     imageUrl: RIZZ,
     demoUrl: null,
     codeUrl: "https://github.com/Rayyks/QBC-Corp",
