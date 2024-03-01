@@ -41,21 +41,21 @@ export const links = [
 ] as const;
 
 export const educationsData = [
-  {
-    title: "Apple Developer Academy",
-    location: "IT Devs, Batam",
-    description:
-      "I decided to join the apple developer academy to open up a great opportunity to become a developer who makes an impact on others, and here I met a team that supports each other.",
-    icon: React.createElement(LuGraduationCap),
-    date: "2024 - 2025",
-  },
+  // {
+  //   title: "Apple Developer Academy",
+  //   location: "IT Devs, Batam",
+  //   description:
+  //     "I decided to join the apple developer academy to open up a great opportunity to become a developer who makes an impact on others, and here I met a team that supports each other.",
+  //   icon: React.createElement(LuGraduationCap),
+  //   date: "2024 - 2025",
+  // },
   {
     title: "Politeknik Negeri Batam",
     location: "Software Engineering, Batam",
     description:
       "I am currently pursuing a Diploma in Software Engineering at Politeknik Negeri Batam. In addition, I am working on many projects at university, where I collaborate with a team and learn new skills and technologies.",
     icon: React.createElement(LuGraduationCap),
-    date: "2022 - Paused due to Apple Developer Academy",
+    date: "2022 - Present",
   },
   {
     title: "Multistudi High School",
