@@ -97,15 +97,15 @@ export const experiencesData = [
 ] as const;
 
 export const projectsData = [
-  {
-    title: "Foreign Body (FBD)",
-    completed: false,
-    description: "With FBD you can make your body just like you want",
-    tags: ["React.js", "Express", "Node.js", "Aceternity UI", "MongoDb"],
-    imageUrl: RIZZ,
-    demoUrl: null,
-    codeUrl: "https://github.com/Rayyks/QBC-Corp",
-  },
+  // {
+  //   title: "Foreign Body (FBD)",
+  //   completed: false,
+  //   description: "With FBD you can make your body just like you want",
+  //   tags: ["React.js", "Express", "Node.js", "Aceternity UI", "MongoDb"],
+  //   imageUrl: RIZZ,
+  //   demoUrl: null,
+  //   codeUrl: "https://github.com/Rayyks/QBC-Corp",
+  // },
   {
     title: "Digital Store",
     completed: true,
