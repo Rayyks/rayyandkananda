@@ -36,7 +36,7 @@ export default function Intro() {
     closeLanguageModal();
   };
 
-  const experiene = new Date().getFullYear() - 2020;
+  const experiene = new Date().getFullYear() - 2022;
 
   return (
     <section
@@ -57,7 +57,7 @@ export default function Intro() {
             <div className="font-bold tooltip tooltip-right tooltip-secondary">
               <Image
                 src={ME}
-                alt="Ricardo portrait"
+                alt="THE MOST GENIUS PERSON IN THE WORLD"
                 width="192"
                 height="192"
                 quality="95"
