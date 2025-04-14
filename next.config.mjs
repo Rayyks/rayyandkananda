@@ -1,19 +1,8 @@
 import { build } from "velite";
 
-/** @type {import('next').NextConfig} */
-export default {
-  // othor next config here...
-  webpack: (config) => {
-    config.plugins.push(new VeliteWebpackPlugin());
-    return config;
-  },
-};
-
 class VeliteWebpackPlugin {
   static started = false;
-  apply(/** @type {import('webpack').Compiler} */ compiler) {
-    // executed three times in nextjs
-    // twice for the server (nodejs / edge runtime) and once for the client
+  apply(compiler) {
     compiler.hooks.beforeCompile.tapPromise("VeliteWebpackPlugin", async () => {
       if (VeliteWebpackPlugin.started) return;
       VeliteWebpackPlugin.started = true;
@@ -22,3 +11,19 @@ class VeliteWebpackPlugin {
     });
   }
 }
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  telemetry: false,
+  webpack: (config) => {
+    config.ignoreWarnings = [
+      {
+        message: /Build dependencies behind this expression are ignored/,
+      },
+    ];
+    config.plugins.push(new VeliteWebpackPlugin());
+    return config;
+  },
+};
+
+export default nextConfig;
