@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Code, Command, Github, Globe, Link, Linkedin } from "lucide-react";
+import { Code, Command, Github, Instagram, Link, Linkedin } from "lucide-react";
 
 import {
   CommandDialog,
@@ -56,37 +56,36 @@ export function MyCommandDialog() {
             <CommandItem
               onSelect={() =>
                 window.open(
-                  "https://github.com/swajp/swajp-portfolio-v2",
+                  "https://github.com/Rayyks/rayyandkananda",
                   "_ blank"
                 )
               }
             >
               <Code className="mr-2 h-4 w-4" />
-              <span>Source code</span>
+              <span>Source code (give it a star please 🤟 )</span>
             </CommandItem>
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="Social">
             <CommandItem
               onSelect={() =>
-                window.open("https://github.com/swajp", "_ blank")
+                window.open("https://github.com/Rayyks", "_ blank")
               }
             >
               <Github className="mr-2 h-4 w-4" />
               <span>Github</span>
             </CommandItem>
             <CommandItem
-              onSelect={() => window.open("https://drie.cz", "_ blank")}
+              onSelect={() =>
+                window.open("https://instagram.com/rayy__dna", "_ blank")
+              }
             >
-              <Globe className="mr-2 h-4 w-4" />
-              <span>DRIE</span>
+              <Instagram className="mr-2 h-4 w-4" />
+              <span>Instagram</span>
             </CommandItem>
             <CommandItem
               onSelect={() =>
-                window.open(
-                  "https://www.linkedin.com/in/miroslav-stejskal/",
-                  "_ blank"
-                )
+                window.open("https://www.linkedin.com/in/rayyand/", "_ blank")
               }
             >
               <Linkedin className="mr-2 h-4 w-4" />
