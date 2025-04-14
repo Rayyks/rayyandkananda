@@ -19,7 +19,7 @@ export default function Connect() {
             rel="noopener noreferrer"
           >
             <MailIcon size={18} className="mr-3" />
-            rayydna14@gamil.com
+            rayydna14@gmail.com
           </Link>
           <Link href="https://github.com/Rayyks">
             <Github size={18} className="mr-3" />

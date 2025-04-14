@@ -17,6 +17,8 @@ export default function BlogsPage() {
           slug={post.slug}
           title={post.title}
           description={post.description ? post.description : ""}
+          tags={post.tags ? post.tags : []}
+          cover={post.cover ? post.cover : ""}
           date={post.date}
         />
       ))}

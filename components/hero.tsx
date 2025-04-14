@@ -1,3 +1,5 @@
+"use client";
+
 import MaxWidthWrapper from "./max-width-wrapper";
 import { ContactForm } from "./contact-form";
 import { Plus_Jakarta_Sans } from "next/font/google";
@@ -39,9 +41,14 @@ export default function Hero() {
         loves messing with both software and hardware until I crack how it all
         works..
       </p>
+
       <Button
+        type="button"
         variant="outline"
         className="mt-8 px-4 py-2 rounded-full flex items-center justify-center gap-1.5 text-primary-foreground bg-popover-foreground hover:bg-secondary hover:text-primary transition-colors ease-linear duration-400"
+        onClick={() => {
+          window.open("/resume.pdf", "_blank");
+        }}
       >
         Get Resume
       </Button>

@@ -2,56 +2,74 @@
 title: Introducing Blog
 description: This portfolio finally has a blog! And this is the first post.
 date: 2024-08-24
+tags: ["blog", "portfolio", "introduction"]
+cover: "https://i.pinimg.com/736x/e8/a3/1a/e8a31ad0245913957ce9740af78f35eb.jpg"
 published: true
 ---
-
-I finally found some time to add a blog to my portfolio. I'm excited to share my thoughts and projects with you. I hope you enjoy reading my posts as much as I enjoy writing them. Stay tuned for more content!
 
 &nbsp;
 
 <img
-    className="rounded-lg"
-    src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHVzdTlwY3czMjZ6ZWI5a3Joam5kM3oyMDQ5eGN0NWxyNHEzOW1oYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/eKNrUbDJuFuaQ1A37p/giphy.webp"
+  src="https://i.pinimg.com/736x/e8/a3/1a/e8a31ad0245913957ce9740af78f35eb.jpg"
+  width={800}
+  height={400}
+  className="rounded-lg w-full max-h-[200px] object-cover"
+  alt="intro"
 />
-- you can also use Image component from nextjs
+
+# Welcome to My Brain Dump 🧠
+
+So I finally did it — this portfolio now has a **blog**.
+
+Not just for show. Not just to look busy. But because I **need a place to offload all the things I’m building, learning, and discovering** — raw and unfiltered.
+
+## What to Expect?
+
+Expect a post **every week, maybe every month, maybe even tonight** — depending on the caffeine levels and how deep I fall into my current rabbit hole.
+
+Could be something technical. Could be a new tool I just found. Could be a weird browser bug that ate 3 hours of my life. Could be a deep dive on why something matters and how it can shift your whole perspective.
+
+---
+
+## Why I’m Doing This
+
+Because I’m always searching. Always learning. Always digging into the abstract, the unexplained, the half-broken systems that quietly run our world.
+
+And I’m not doing this just to get smarter.
+
+I’m doing it to **wake people up**.
+
+To make the people around me **think harder**, build smarter, and crack through whatever shell they’ve been stuck in.
+
+To help **break things — for good**.  
+To flip the system 180°.  
+To rewire how we **feel**, how we **think**, and how we **move** through this chaotic internet-shaped life.
+
+Because this world ain’t static.  
+It’s fluid.  
+It’s abstract.  
+And it’s built by strange, brilliant, messy, random human beings.
+
+---
+
+<Callout type="info">
+  If my writing can make someone think, question, build, or even destroy
+  something in the name of growth — then this blog did its job.
+</Callout>
 
 &nbsp;
 
-```
+#### And let’s be real…
 
-Create a new blog post
+In a world where everyone scrolls, judges, skips — the **vibe matters**.  
+So yeah, I’ll keep it **aesthetic**. I’ll keep it **real**.  
+Because if it don’t look good, most people won’t care. And I want people to care.
 
-To create a new blog post, you can copy the `introducing-blog.mdx` file and rename it to your desired title. Make sure to update the metadata at the top of the file with the new title, description, date, and published status.
+This ain’t just a blog.  
+It’s an energy shift.
 
-```
+Stay tuned.
 
-&nbsp;
+---
 
-#### You can create your own components and use them in your blog posts
-
-```
-To create new components, you can add them to the `mdx-components.ts` and style them as you like.
-```
-
-&nbsp;
-
-### To use mdx for projects
-
-You need to edit `velite.config.ts` and add the following code:
-
-```ts
-const projects = defineCollection({
-    name: "Projects",
-    // Add the path to your project mdx files
-    pattern: "projects/**/*.mdx",
-    schema: s
-        .object({
-            // Add any frontmatter fields you want to use, for example you can check const posts
-        })
-        .transform(computedFields)
-})
-```
-
-&nbsp;
-
-And then it is just copy-pasting the code from `/blog/page.tsx` and `/blog/[...slug]/page.tsx` into your own folder path.
+🛠 Built with MDX, powered by Velite, fueled by curiosity.

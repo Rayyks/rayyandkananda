@@ -43,7 +43,7 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        <p className="pt-8">© {getYear()} swajp</p>
+        <p className="pt-8">© {getYear()} Rayyks</p>
       </div>
     </footer>
   );

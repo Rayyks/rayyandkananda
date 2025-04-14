@@ -1,8 +1,85 @@
 ---
-title: Unpublished Blog
-description: This post is not published
-date: 2024-08-24
-published: false
+title: Ventoy is a Great Tool for Creating Bootable USB Drives
+description: Since I discovered Ventoy, I’ve been using it to create bootable USB drives for various operating systems. It’s a dope tool that lets you boot multiple ISOs from a single USB — no more formatting!
+date: 2025-04-15
+tags: ["ventoy", "usb", "bootable", "iso", "windows", "linux"]
+cover: "https://i.pinimg.com/736x/a8/74/21/a874215b2a255c0bb0279a4f025ea1d7.jpg"
+published: true
 ---
 
-This post is not published. You can publish it by changing the `published` field in the frontmatter to `true`.
+&nbsp;
+
+<img
+  src="https://i.pinimg.com/736x/a8/74/21/a874215b2a255c0bb0279a4f025ea1d7.jpg"
+  width={800}
+  height={400}
+  className="rounded-lg w-full max-h-[200px] object-cover"
+  alt="Ventoy Cover Image"
+/>
+
+# Ventoy: The Ultimate USB Multi-Boot Tool
+
+Ever get tired of re-flashing your USB every time you wanna try out a new OS or recovery tool? Yeah, same here. That's why I mess with **Ventoy** — it completely changes the bootable USB game.
+
+With one setup, you can throw in as many `.iso` files as you want and boot any of 'em straight up. No need to format, no more creating new drives per ISO.
+
+<Callout type="info">
+  Ventoy is especially useful for devs, IT folks, and power users who deal with
+  a bunch of OSes or tools. One USB. Multiple ISOs. Let that sink in.
+</Callout>
+
+---
+
+## Why Ventoy?
+
+- Works with **legacy BIOS & UEFI**
+- Drag-n-drop ISOs, no flashing
+- Supports Windows, Linux distros, utility ISOs, and more
+- 100% free & open source
+- Lightweight, portable, zero bloat
+
+If you're the type who likes testing OS builds, helping friends fix their laptops, or even just likes having options when things go wrong — Ventoy is a must-have.
+
+---
+
+## What You’ll Need
+
+- A USB drive (8GB minimum, 16GB+ preferred)
+- Some `.iso` files (Windows, Linux, utilities, etc.)
+- [Ventoy](https://www.ventoy.net/en/download.html) (obviously)
+
+---
+
+## Step-by-Step Guide
+
+### 1. Download Ventoy
+
+Head to the [official download page](https://www.ventoy.net/en/download.html) and grab the latest release. Extract the zip once it’s downloaded.
+
+### 2. Install Ventoy to Your USB Drive
+
+- Open `Ventoy2Disk.exe`
+- Pick your USB drive
+- Hit **Install** (⚠️ this will wipe the USB — back up your stuff)
+- After it's done, your USB is now Ventoy-powered
+
+<Callout type="warning">
+  <span className="text-black">
+    You only need to install Ventoy once. After that, you're just
+    adding/deleting ISO files like it’s a normal flash drive.
+  </span>
+</Callout>
+
+### 3. Add ISO Files
+
+Just open the USB in Explorer and drop in your `.iso` files. Done.
+
+Want a Windows installer? Drop it in. Wanna boot into Kali Linux? Toss it in too. Even mix and match — no problem.
+
+```plaintext
+📁 Ventoy USB/
+  ├── Windows10.iso
+  ├── Pop_OS.iso
+  ├── HirenBootCD.iso
+  └── Clonezilla.iso
+```
