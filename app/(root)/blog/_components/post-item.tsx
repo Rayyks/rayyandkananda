@@ -29,7 +29,7 @@ export default function PostItem({
       </div>
       {description && <p className="text-muted-foreground">{description}</p>}
       {tags && (
-        <ul className="flex gap-2 mt-2">
+        <ul className="flex gap-1 mt-2 flex-wrap">
           {tags.map((tag) => (
             <li
               key={tag}
@@ -40,6 +40,12 @@ export default function PostItem({
           ))}
         </ul>
       )}
+      <dl className="flex flex-wrap justify-center bg-black dark:bg-white rounded-lg text-white dark:text-black p-1 mt-4">
+        <dt>Published On </dt>
+        <dd>
+          <time dateTime={date}>{formatDate(date)}</time>
+        </dd>
+      </dl>
       {cover && (
         <Link href={slug}>
           <div className="mt-4">
@@ -51,13 +57,7 @@ export default function PostItem({
           </div>
         </Link>
       )}
-      <div className="flex justify-between">
-        <dl className="flex bg-black dark:bg-white rounded-lg text-white dark:text-black p-2 mt-4">
-          <dt>Published On </dt>
-          <dd>
-            <time dateTime={date}>{formatDate(date)}</time>
-          </dd>
-        </dl>
+      <div className="flex">
         <Link
           className={buttonVariants({
             variant: "link",
