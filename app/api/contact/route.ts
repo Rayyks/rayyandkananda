@@ -1,131 +1,242 @@
+import { Resend } from "resend";
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Elegant HTML email template
+const createEmailTemplate = (
+  email: string,
+  subject: string,
+  message: string
+) => `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Contact Message</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 40px 30px;
+            text-align: center;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .header h1 {
+            color: #000;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 16px;
+            font-weight: 400;
+        }
+        
+        .content {
+            padding: 40px 30px;
+            background: #ffffff;
+        }
+        
+        .message-box {
+            background: #000;
+            color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 4px solid #fff;
+        }
+        
+        .field-group {
+            margin-bottom: 25px;
+        }
+        
+        .field-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .field-value {
+            font-size: 16px;
+            color: #000;
+            font-weight: 500;
+            padding: 10px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .message-content {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #fff;
+            font-weight: 400;
+        }
+        
+        .footer {
+            background: #000;
+            color: #fff;
+            padding: 30px;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        .footer p {
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e9ecef, transparent);
+            margin: 30px 0;
+        }
+        
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 10px;
+                border-radius: 12px;
+            }
+            
+            .header, .content, .footer {
+                padding: 25px 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .message-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <h1>Portfolio Contact</h1>
+            <p>You've received a new message</p>
+        </div>
+        
+        <div class="content">
+            <div class="field-group">
+                <span class="field-label">From Email</span>
+                <div class="field-value">${email}</div>
+            </div>
+            
+            <div class="field-group">
+                <span class="field-label">Subject</span>
+                <div class="field-value">${subject}</div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="message-box">
+                <div class="message-content">
+                    ${message.replace(/\n/g, "<br>")}
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>This message was sent from your portfolio contact form</p>
+            <p>Reply directly to this email to respond to the sender</p>
+        </div>
+    </div>
+</body>
+</html>
+`;
 
 export async function POST(req: Request) {
-  const values = await req.json();
-  const { email, subject, message } = values;
-
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: {
-      user: process.env.NODEMAILER_USER,
-      pass: process.env.NODEMAILER_PASS,
-    },
-  });
-
   try {
-    const mail = await transporter.sendMail({
-      from: '"sender@gmail.com" <sender@gmail.com>',
-      to: "rayydna14@gmail.com",
-      subject: subject,
+    const body = await req.json();
+    const { email, subject, message, honeypot } = body;
+
+    // Bot detection
+    if (honeypot) {
+      return NextResponse.json({ error: "Bot detected." }, { status: 400 });
+    }
+
+    // Validation
+    if (!email || !subject || !message) {
+      return NextResponse.json(
+        { error: "All fields are required." },
+        { status: 400 }
+      );
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { error: "Please enter a valid email address." },
+        { status: 400 }
+      );
+    }
+
+    // Send email with elegant template
+    const data = await resend.emails.send({
+      from: `Portfolio Contact <${process.env.FROM_EMAIL}>`,
+      to: process.env.TO_EMAIL || "rayydna14@gmail.com",
+      subject: `[PORTFOLIO] ${subject}`,
       replyTo: email,
-      html: `
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>${subject}</title>
-          <style>
-            body {
-              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-              line-height: 1.6;
-              color: #333;
-              max-width: 600px;
-              margin: 0 auto;
-              padding: 20px;
-            }
-            .email-container {
-              border-radius: 8px;
-              overflow: hidden;
-              border: 1px solid #e0e0e0;
-              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            }
-            .email-header {
-              background-color: #4b6cb7;
-              background-image: linear-gradient(to right, #4b6cb7, #182848);
-              color: white;
-              padding: 20px;
-              text-align: center;
-            }
-            .email-body {
-              padding: 20px;
-              background-color: #fff;
-            }
-            .section {
-              margin-bottom: 20px;
-              padding-bottom: 15px;
-              border-bottom: 1px solid #f0f0f0;
-            }
-            .section-title {
-              font-size: 18px;
-              font-weight: 600;
-              color: #4b6cb7;
-              margin-bottom: 10px;
-            }
-            .info-item {
-              padding: 8px 0;
-            }
-            .label {
-              font-weight: 600;
-              color: #555;
-              margin-right: 8px;
-            }
-            .message-content {
-              background-color: #f9f9f9;
-              border-left: 4px solid #4b6cb7;
-              padding: 15px;
-              border-radius: 0 4px 4px 0;
-            }
-            .footer {
-              text-align: center;
-              font-size: 12px;
-              color: #888;
-              padding: 15px;
-              background-color: #f7f7f7;
-            }
-          </style>
-        </head>
-        <body>
-          <div class="email-container">
-            <div class="email-header">
-              <h1 style="margin: 0;">New Message</h1>
-              <p style="margin: 5px 0 0 0;">From contact form</p>
-            </div>
-            <div class="email-body">
-              <div class="section">
-                <div class="section-title">Contact Details</div>
-                <div class="info-item">
-                  <span class="label">Email:</span> ${email}
-                </div>
-              </div>
-              
-              <div class="section">
-                <div class="section-title">Message</div>
-                <div class="message-content">
-                  ${message.replace(/\n/g, "<br>")}
-                </div>
-              </div>
-            </div>
-            <div class="footer">
-              This email was sent from your website's contact form
-            </div>
-          </div>
-        </body>
-        </html>
+      html: createEmailTemplate(email, subject, message),
+      // Fallback plain text
+      text: `
+Portfolio Contact Form Message
+
+From: ${email}
+Subject: ${subject}
+
+Message:
+${message}
+
+---
+This message was sent from your portfolio contact form.
+Reply directly to this email to respond to the sender.
       `,
     });
 
-    return NextResponse.json(
-      { message: "Form sent successfully" },
-      { status: 200 }
-    );
+    return NextResponse.json({
+      success: true,
+      message: "Email sent successfully!",
+      data,
+    });
   } catch (error) {
-    console.log(error);
+    console.error("Error sending email:", error);
     return NextResponse.json(
-      { message: "Error, try it again." },
+      { error: "Failed to send email. Please try again later." },
       { status: 500 }
     );
   }
