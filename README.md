@@ -1,4 +1,4 @@
-<a href="https://buymeacoffee.com/swajp" alt="buyacoffe">
+<a href="https://buymeacoffee.com/rayydna14g" alt="buyacoffe">
   <img src="https://github.com/user-attachments/assets/37b0e28f-c82f-42a9-bd1e-d937488758ab"/>
 </a>
 
