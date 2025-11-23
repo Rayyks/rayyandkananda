@@ -10,7 +10,7 @@ const font = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export default function Hero() {
   return (
-    <MaxWidthWrapper className="mb-16 mt-16 sm:mt-32 flex flex-col items-center justify-center text-center">
+    <MaxWidthWrapper className="mb-16 mt-16 sm:mt-32 flex flex-col items-center justify-center text-center z-50 pointer-events-none">
       <ContactForm>
         <div className="inline-flex items-center rounded-lg border px-3 py-1 text-sm font-medium mb-4">
           <span className="relative flex h-2 w-2 mr-2">
@@ -45,7 +45,7 @@ export default function Hero() {
       <Button
         type="button"
         variant="outline"
-        className="mt-8 px-4 py-2 rounded-full flex items-center justify-center gap-1.5 text-primary-foreground bg-popover-foreground hover:bg-secondary hover:text-primary transition-colors ease-linear duration-400"
+        className="mt-8 px-4 py-2 rounded-full flex items-center justify-center gap-1.5 text-primary-foreground bg-popover-foreground hover:bg-secondary hover:text-primary transition-colors ease-linear duration-400 pointer-events-auto"
         onClick={() => {
           window.open("/resume.pdf", "_blank");
         }}

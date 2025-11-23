@@ -110,7 +110,7 @@ export function ContactForm({ children }: { children: React.ReactNode }) {
   }
   return (
     <Drawer>
-      <DrawerTrigger role="button" asChild>
+      <DrawerTrigger role="button" asChild className="pointer-events-auto">
         {children}
       </DrawerTrigger>
       <DrawerContent>
