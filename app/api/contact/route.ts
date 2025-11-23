@@ -7,7 +7,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const createEmailTemplate = (
   email: string,
   subject: string,
-  message: string
+  message: string,
 ) => `
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +21,7 @@ const createEmailTemplate = (
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -29,7 +29,7 @@ const createEmailTemplate = (
             background-color: #f8f9fa;
             padding: 20px;
         }
-        
+
         .email-container {
             max-width: 600px;
             margin: 0 auto;
@@ -38,14 +38,14 @@ const createEmailTemplate = (
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
-        
+
         .header {
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
             padding: 40px 30px;
             text-align: center;
             border-bottom: 1px solid #e9ecef;
         }
-        
+
         .header h1 {
             color: #000;
             font-size: 28px;
@@ -53,18 +53,18 @@ const createEmailTemplate = (
             margin-bottom: 8px;
             letter-spacing: -0.5px;
         }
-        
+
         .header p {
             color: #666;
             font-size: 16px;
             font-weight: 400;
         }
-        
+
         .content {
             padding: 40px 30px;
             background: #ffffff;
         }
-        
+
         .message-box {
             background: #000;
             color: #fff;
@@ -73,11 +73,11 @@ const createEmailTemplate = (
             margin: 20px 0;
             border-left: 4px solid #fff;
         }
-        
+
         .field-group {
             margin-bottom: 25px;
         }
-        
+
         .field-label {
             font-size: 12px;
             font-weight: 600;
@@ -87,7 +87,7 @@ const createEmailTemplate = (
             margin-bottom: 5px;
             display: block;
         }
-        
+
         .field-value {
             font-size: 16px;
             color: #000;
@@ -95,14 +95,14 @@ const createEmailTemplate = (
             padding: 10px 0;
             border-bottom: 1px solid #e9ecef;
         }
-        
+
         .message-content {
             font-size: 16px;
             line-height: 1.8;
             color: #fff;
             font-weight: 400;
         }
-        
+
         .footer {
             background: #000;
             color: #fff;
@@ -110,32 +110,32 @@ const createEmailTemplate = (
             text-align: center;
             font-size: 14px;
         }
-        
+
         .footer p {
             margin-bottom: 10px;
             opacity: 0.8;
         }
-        
+
         .divider {
             height: 1px;
             background: linear-gradient(90deg, transparent, #e9ecef, transparent);
             margin: 30px 0;
         }
-        
+
         @media (max-width: 600px) {
             .email-container {
                 margin: 10px;
                 border-radius: 12px;
             }
-            
+
             .header, .content, .footer {
                 padding: 25px 20px;
             }
-            
+
             .header h1 {
                 font-size: 24px;
             }
-            
+
             .message-box {
                 padding: 20px;
             }
@@ -148,27 +148,27 @@ const createEmailTemplate = (
             <h1>Portfolio Contact</h1>
             <p>You've received a new message</p>
         </div>
-        
+
         <div class="content">
             <div class="field-group">
                 <span class="field-label">From Email</span>
                 <div class="field-value">${email}</div>
             </div>
-            
+
             <div class="field-group">
                 <span class="field-label">Subject</span>
                 <div class="field-value">${subject}</div>
             </div>
-            
+
             <div class="divider"></div>
-            
+
             <div class="message-box">
                 <div class="message-content">
                     ${message.replace(/\n/g, "<br>")}
                 </div>
             </div>
         </div>
-        
+
         <div class="footer">
             <p>This message was sent from your portfolio contact form</p>
             <p>Reply directly to this email to respond to the sender</p>
@@ -192,7 +192,7 @@ export async function POST(req: Request) {
     if (!email || !subject || !message) {
       return NextResponse.json(
         { error: "All fields are required." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -201,7 +201,7 @@ export async function POST(req: Request) {
     if (!emailRegex.test(email)) {
       return NextResponse.json(
         { error: "Please enter a valid email address." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -237,7 +237,7 @@ Reply directly to this email to respond to the sender.
     console.error("Error sending email:", error);
     return NextResponse.json(
       { error: "Failed to send email. Please try again later." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
