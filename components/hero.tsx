@@ -19,14 +19,14 @@ export default function Hero() {
           </span>
           <span className="sm:hidden">Available for hire</span>
           <span className="hidden sm:inline font-mono">
-            Available for work!
+            Available for work!{" "}
           </span>
         </div>
       </ContactForm>
       <h1
         className={cn(
           "max-w-4xl text-4xl font-extrabold md:text-5xl lg:text-6xl",
-          font.className
+          font.className,
         )}
       >
         Hi I&apos;m a{" "}
